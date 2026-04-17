@@ -1,8 +1,9 @@
 import { useState, useMemo } from "react";
-import Navbar from "../components/Navbar";
+import Navbar from "../Navbar/Navbar";
 import { motion } from "framer-motion";
-import { supabase } from "../lib/supabaseClient";
+import { supabase } from "../../lib/supabaseClient";
 import Swal from "sweetalert2";
+import "./RSVP.css";
 
 function RSVP() {
   const [firstName, setFirstName] = useState("");
