@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import Navbar from "../components/Navbar";
-import valeImg from "../assets/Vale.jpg";
-import nachoImg from "../assets/Nacho.jpg";
-import coupleImg from "../assets/Pareja.avif";
+import valeImg from "../assets/image0.jpeg";
+import nachoImg from "../assets/image1.jpeg";
+import coupleImg from "../assets/image2.jpeg";
 
 // Secuencia correcta:
 // 1. Valeria (solo nombre)
