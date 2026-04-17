@@ -1,0 +1,54 @@
+.navbar { 
+  position: sticky; 
+  width: 100%; 
+  display: flex; 
+  justify-content: center; 
+  gap: 40px; 
+  padding: 10px 0; 
+  background: transparent; /* 👈 sin fondo */ 
+  
+}
+
+/* base */
+.navbar span {
+  position: relative;
+  font-size: 14px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+/* línea base */
+.navbar span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: var(--text-primary);
+  transition: width 0.3s ease;
+
+}
+
+/* hover */
+.navbar span:hover {
+  color: var(--text-primary);
+}
+
+.navbar span:hover::after {
+  width: 100%;
+}
+
+/* active */
+.navbar .active {
+  color: var(--text-primary);
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+/*quitar línea del active */
+.navbar .active::after {
+  width: 0%;
+}

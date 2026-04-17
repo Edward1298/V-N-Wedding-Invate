@@ -1,4 +1,4 @@
-
+import "./Navbar.css";
 const sections = [
   { id: "hero", label: "Inicio" },
   { id: "funfacts", label: "Nosotros" },

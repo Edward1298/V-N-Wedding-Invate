@@ -1,4 +1,4 @@
-import Navbar from "../components/Navbar";
+import Navbar from "../Navbar/Navbar";
 import { motion } from "framer-motion";
 
 function Gallery() {

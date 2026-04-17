@@ -1,9 +1,8 @@
-import Hero from "../components/Hero";
-import EventInfo from "../components/EventInfo";
-import RSVP from "../components/RSVP";
-import Gallery from "../components/Gallery";
-import FunFacts from "../components/FunFacts";
-import Navbar from "../components/Navbar";
+import Hero from "../components/Hero/Hero";
+import EventInfo from "../components/EventInfo/EventInfo";
+import RSVP from "../components/RSVP/RSVP";
+import Gallery from "../components/Gallery/Gallery";
+import FunFacts from "../components/FunFacts/FunFacts";
 
 function Home() {
   return (

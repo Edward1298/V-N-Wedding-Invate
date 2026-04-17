@@ -1,0 +1,89 @@
+.rsvp-input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid var(--border-subtle);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.rsvp-submit-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 8px;
+}
+
+.rsvp-submit-btn.enabled {
+  background-color: var(--border-subtle);
+  color: #fff;
+  opacity: 1;
+}
+
+.rsvp-submit-btn.disabled {
+  background-color: var(--border-subtle);
+  color: var(--text-primary);
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+
+.rsvp-toggle-wrapper {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.rsvp-toggle-label {
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.rsvp-toggle-container {
+  position: relative;
+  display: inline-flex;
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle);
+  overflow: hidden;
+}
+
+.rsvp-toggle-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background-color: var(--border-subtle);
+  border-radius: 999px;
+  transition: transform 0.3s ease;
+  z-index: 0;
+}
+
+.rsvp-toggle-slider.slide-right {
+  transform: translateX(100%);
+}
+
+.rsvp-toggle-option {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  padding: 10px 16px;
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+  white-space: nowrap;
+  text-align: center;
+  user-select: none;
+}
+
+.rsvp-toggle-option.selected {
+  color: #fff;
+}
+
+.rsvp-toggle-option input[type="radio"] {
+  display: none;
+}

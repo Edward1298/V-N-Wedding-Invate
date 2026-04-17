@@ -1,8 +1,9 @@
 import { useState, useMemo } from "react";
-import Navbar from "../components/Navbar";
+import Navbar from "../Navbar/Navbar";
 import { motion } from "framer-motion";
-import { supabase } from "../lib/supabaseClient";
+import { supabase } from "../../lib/supabaseClient";
 import Swal from "sweetalert2";
+import "./RSVP.css";
 
 function RSVP() {
   const [firstName, setFirstName] = useState("");
@@ -89,11 +90,11 @@ function RSVP() {
           flexDirection: "column",
           justifyContent: "flex-start",
           background: "var(--bg-primary)",
-          width: "40%",
+          width: "min(90%, 560px)",
           margin: "0 auto",
           border: "1px solid var(--border-subtle)",
           borderRadius: "12px",
-          padding: "30px",
+          padding: "clamp(16px, 5vw, 30px)",
           textAlign: "left",
         }}
       >
