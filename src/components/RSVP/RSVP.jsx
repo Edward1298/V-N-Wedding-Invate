@@ -90,11 +90,11 @@ function RSVP() {
           flexDirection: "column",
           justifyContent: "flex-start",
           background: "var(--bg-primary)",
-          width: "40%",
+          width: "min(90%, 560px)",
           margin: "0 auto",
           border: "1px solid var(--border-subtle)",
           borderRadius: "12px",
-          padding: "30px",
+          padding: "clamp(16px, 5vw, 30px)",
           textAlign: "left",
         }}
       >
