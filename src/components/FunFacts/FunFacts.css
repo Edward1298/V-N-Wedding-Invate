@@ -1,42 +1,234 @@
-.cards-container {
+/* ─── SECTION ─── */
+.funfacts-section {
+  min-height: 100vh;
+  padding: 120px 20px 80px;
+  background: var(--bg-primary); 
+}
+
+/* ─── CONTAINER ─── */
+.funfacts-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  margin-top: 60px;
+}
+
+/* ─── GRID ─── */
+.funfacts-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 280px);
+  gap: 6px;
+  border: 1px solid var(--border-subtle);
+  padding: 16px;
+}
+
+/* ─── CELDA TÍTULO ─── */
+.funfacts-title-cell {
+  grid-column: 1;
+  grid-row: 1;
+  background: var(--bg-secondary); 
   display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 28px;
+  gap: 12px;
+  
+  
 }
 
-.card {
-  width: 120px;
-  height: 150px;
+.funfacts-eyebrow {
+  font-family: 'Georgia', serif;
+  font-size: 10px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  opacity: 0.6;
+}
+
+.funfacts-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(22px, 2.8vw, 36px);
+  font-weight: 300;
+  color: var(--text-primary);
+  line-height: 1.2;
+  margin: 0;
+  text-align: left;
+}
+
+.funfacts-hint {
+  font-family: 'Georgia', serif;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--border-subtle);
+  margin-top: 16px;
+}
+
+/* ─── CARDS ─── */
+.ff-card {
   perspective: 1000px;
+  cursor: pointer;
 }
 
-.card-inner {
+.ff-card-inner {
   width: 100%;
   height: 100%;
   position: relative;
   transform-style: preserve-3d;
-  transition: transform 0.6s;
+  transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.card:hover .card-inner {
+
+/* Hover en desktop */
+@media (hover: hover) {
+  .ff-card:hover .ff-card-inner {
+    transform: rotateY(180deg);
+  }
+}
+
+/* Click/tap en cualquier dispositivo */
+.ff-card.flipped .ff-card-inner {
   transform: rotateY(180deg);
 }
 
-.card-front,
-.card-back {
+.ff-front,
+.ff-back {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: var(--hover-soft);
-  color: white;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  border-radius: 10px;
-  backface-visibility: hidden;
+  padding: 24px;
+  gap: 20px;
 }
 
-.card-back {
+/* ─── FRENTE ─── */
+.ff-front {
+  background: var(--bg-primary);
+}
+
+.ff-icon {
+  width: 64px;
+  height: 64px;
+  color: var(--text-secondary);
+  opacity: 0.7;
+}
+
+.ff-question {
+  font-family: 'Georgia', serif;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  text-align: center;
+  margin: 0;
+}
+
+/* ─── REVERSO ─── */
+.ff-back {
+  background: var(--bg-secondary);
   transform: rotateY(180deg);
+}
+
+
+.ff-answer {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(15px, 1.6vw, 19px);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--text-primary); 
+  text-align: center;
+  margin: 0;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .funfacts-container {
+    margin-top: 20px;
+  }
+
+  .funfacts-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    gap: 4px;
+    padding: 4px;
+  }
+
+  /* Título ocupa fila completa arriba */
+.funfacts-title-cell {
+    grid-column: 1;        
+    grid-row: auto;
+    height: 180px;      
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+     overflow: hidden;  
+  }
+
+  .funfacts-heading {
+    text-align: left;
+    font-size: 20px;
+  }
+
+  /* Cards con altura fija para que se vean bien en 2 columnas */
+  .ff-card {
+    height: 180px;
+  }
+
+  .ff-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .ff-question {
+    font-size: 11px;
+  }
+
+  .ff-answer {
+    font-size: 13px;
+  }
+
+  .ff-front,
+  .ff-back {
+    padding: 16px;
+    gap: 12px;
+  }
+}
+
+/* Pantallas muy pequeñas */
+@media (max-width: 380px) {
+  .ff-card {
+    height: 160px;
+  }
+
+  .funfacts-title-cell {
+    min-height: 170px;
+  }
+}
+
+@media (max-width: 500px) {
+  .funfacts-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    padding: 4px;
+  }
+
+  .ff-front,
+  .ff-back {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .ff-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .ff-question {
+    font-size: 11px;
+  }
 }

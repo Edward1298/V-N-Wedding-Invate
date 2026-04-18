@@ -1,18 +1,18 @@
 import "./Navbar.css";
 const sections = [
   { id: "hero", label: "Inicio" },
-  { id: "funfacts", label: "Nosotros" },
+   { id: "aboutus", label: "Nuestra Historia" },
+  { id: "funfacts", label: "Datos curiosos" },
   { id: "event", label: "Detalles" },
-  { id: "gallery", label: "Galería" },
   { id: "rsvp", label: "RSVP" }
 ];
 
 function Navbar({ active }) {
   const sections = [
     { id: "hero", label: "Inicio" },
-    { id: "funfacts", label: "Nosotros" },
+      { id: "aboutus", label: "Nuestra Historia" },
+    { id: "funfacts", label: "Datos curiosos" },
     { id: "event", label: "Detalles" },
-    { id: "gallery", label: "Galería" },
     { id: "rsvp", label: "RSVP" }
   ];
 
