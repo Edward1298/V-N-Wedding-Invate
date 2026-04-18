@@ -45,7 +45,7 @@ function AboutUs() {
             <span className="divider-line" />
           </div>
           <p className="aboutus-intro">
-            Cada historia de amor tiene un inicio… la nuestra comenzó cuando menos lo esperábamos.
+             Nuestra historia comenzó hace siete años, casi sin darnos cuenta, y desde entonces hemos ido creciendo juntos paso a paso.
           </p>
         </motion.div>
 
@@ -78,10 +78,10 @@ function AboutUs() {
           >
             <span className="text-label">01</span>
             <p className="text-body">
-              Nos conocimos en un momento inesperado, sin imaginar que ese encuentro cambiaría nuestras vidas para siempre.
+              Lo que empezó como una relación entre dos personas muy distintas, con el tiempo se convirtió en un equipo que ha aprendido a apoyarse, a escucharse y a elegirse todos los días.
             </p>
             <p className="text-body">
-              Con el tiempo, cada conversación, cada risa y cada mirada fueron construyendo algo único.
+              A lo largo de estos años hemos vivido momentos increíbles, pero también desafíos que nos han hecho más fuertes. En cada etapa, el amor nunca ha faltado; al contrario, ha sido el motor que nos ha permitido superar lo difícil, celebrar lo bueno y seguir construyendo sueños juntos.
             </p>
           </motion.div>
         </div>
@@ -98,10 +98,10 @@ function AboutUs() {
           >
             <span className="text-label">02</span>
             <p className="text-body">
-              Hoy celebramos no solo nuestro amor, sino todo el camino que hemos recorrido juntos.
+              Con el tiempo también hemos aprendido a poner nuestra mirada en Dios y a dejarlo guiar nuestro camino. Hoy entendemos que Él ha estado presente en cada paso, enseñándonos a amar mejor, a tener paciencia, a perdonar y a confiar.
             </p>
             <p className="text-body text-italic">
-              Y lo que apenas comienza.
+              Poner a Dios en el centro de nuestra relación se ha vuelto lo más importante, y ha permitido que nuestra historia se construya con bases firmes, llenas de fe, esperanza y amor, mientras caminamos juntos con ilusión hacia todo lo que viene.
             </p>
           </motion.div>
 

@@ -1,46 +1,62 @@
+/* ─── Inputs y Textarea ─────────────────────────────────────── */
 .rsvp-input {
   width: 100%;
-  padding: 12px;
-  margin-bottom: 15px;
-  border-radius: 5px;
-  border: 1px solid var(--border-subtle);
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-}
-
-.rsvp-submit-btn {
-  width: 100%;
-  padding: 12px;
+  padding: 12px 16px;
   border-radius: 8px;
-  border: none;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: 8px;
-}
-
-.rsvp-submit-btn.enabled {
-  background-color: var(--border-subtle);
-  color: #fff;
-  opacity: 1;
-}
-
-.rsvp-submit-btn.disabled {
-  background-color: var(--border-subtle);
+  border: 1px solid var(--border-subtle);
+  background-color: transparent;
   color: var(--text-primary);
-  opacity: 0.4;
-  cursor: not-allowed;
+  font-family: 'Georgia', serif;
+  font-size: 0.95rem;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  outline: none;
+  resize: none;
 }
 
+.rsvp-input::placeholder {
+  color: var(--hover-soft);
+}
 
+.rsvp-input:focus {
+  border-color: var(--text-primary);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.06);
+}
+
+/* ─── Labels y helper text ──────────────────────────────────── */
+.rsvp-field-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.rsvp-field-helper {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--hover-soft);
+  margin-top: 6px;
+  line-height: 1.4;
+}
+
+/* ─── Toggle ────────────────────────────────────────────────── */
 .rsvp-toggle-wrapper {
-  text-align: center;
-  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin: 8px 0;
 }
 
 .rsvp-toggle-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--text-primary);
-  margin-bottom: 10px;
+  margin: 0;
 }
 
 .rsvp-toggle-container {
@@ -49,6 +65,8 @@
   border-radius: 999px;
   border: 1px solid var(--border-subtle);
   overflow: hidden;
+  width: 100%;
+  max-width: 320px;
 }
 
 .rsvp-toggle-slider {
@@ -71,9 +89,12 @@
   position: relative;
   z-index: 1;
   flex: 1;
-  padding: 10px 16px;
+  padding: 11px 16px;
   cursor: pointer;
-  color: var(--text-primary);
+  color: var(--hover-soft);
+  font-family: 'Georgia', serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
   transition: color 0.3s ease;
   white-space: nowrap;
   text-align: center;
@@ -81,9 +102,52 @@
 }
 
 .rsvp-toggle-option.selected {
-  color: #fff;
+  color: var(--text-primary);
 }
 
 .rsvp-toggle-option input[type="radio"] {
   display: none;
+}
+
+/* ─── Botón submit ──────────────────────────────────────────── */
+.rsvp-submit-btn {
+  width: 100%;
+  padding: 13px;
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle);
+  font-family: 'Georgia', serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease, opacity 0.3s ease;
+  margin-top: 8px;
+}
+
+.rsvp-submit-btn.enabled {
+  background-color: var(--text-primary);
+  color: var(--bg-primary);
+  border-color: var(--text-primary);
+}
+
+.rsvp-submit-btn.enabled:hover {
+  background-color: transparent;
+  color: var(--text-primary);
+}
+
+.rsvp-submit-btn.disabled {
+  background-color: transparent;
+  color: var(--hover-soft);
+  border-color: var(--border-subtle);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* ─── Divisor sutil entre campos ────────────────────────────── */
+.rsvp-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding-bottom: 4px;
 }
