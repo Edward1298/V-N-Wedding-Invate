@@ -73,7 +73,7 @@ function RSVP() {
       initial={{ opacity: 0, y: 80 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
-      viewport={{ amount: 0.5 }}
+      viewport={{ amount: 0.3 }}
       style={{
         minHeight: "90vh",
         display: "flex",

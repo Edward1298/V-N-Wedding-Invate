@@ -1,16 +1,16 @@
 import Hero from "../components/Hero/Hero";
 import EventInfo from "../components/EventInfo/EventInfo";
 import RSVP from "../components/RSVP/RSVP";
-import Gallery from "../components/Gallery/Gallery";
+import AboutUs from "../components/AboutUs/AboutUs";
 import FunFacts from "../components/FunFacts/FunFacts";
 
 function Home() {
   return (
     <div>     
       <Hero />
+      <AboutUs /> 
       <FunFacts />   
       <EventInfo />    
-      <Gallery /> 
       <RSVP />
     </div>
   );
