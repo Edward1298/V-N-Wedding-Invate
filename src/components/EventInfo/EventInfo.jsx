@@ -1,6 +1,7 @@
 import Navbar from "../Navbar/Navbar";
 import { motion } from "framer-motion";
 import "./EventInfo.css";
+import { useState } from "react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -94,6 +95,24 @@ const IconMaps = () => (
   </svg>
 );
 
+const IconPhone = () => (
+  <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="1.4">
+    <rect x="18" y="4" width="28" height="56" rx="4" />
+    <line x1="26" y1="12" x2="38" y2="12" />
+    <circle cx="32" cy="52" r="2" />
+  </svg>
+);
+
+const IconSinpe = () => (
+  <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="1.4">
+    <path d="M12 32 C12 20 20 12 32 12 C44 12 52 20 52 32" />
+    <polyline points="24,24 32,12 40,24" />
+    <rect x="20" y="32" width="24" height="18" rx="2" />
+    <line x1="32" y1="32" x2="32" y2="50" />
+    <line x1="20" y1="41" x2="44" y2="41" />
+  </svg>
+);
+
 const events = [
   {
     type: "Ceremonia",
@@ -121,7 +140,31 @@ const weather = {
   night: { label: "Noche", temp: "17°" },
 };
 
+const sinpeContacts = [
+  {
+    name: "Jose Ignacio Ramirez Villanea",  
+    phone: "8320-3884",                
+              
+  },
+  {
+    name: "Valeria Camacho Sandí",  
+    phone: "8419-2861",                 
+  },
+];
+
+
+
+
 function EventInfo() {
+
+  const [copiedIndex, setCopiedIndex] = useState(null);
+
+const handleCopy = (phone, index) => {
+  navigator.clipboard.writeText(phone.replace("-", ""));
+  setCopiedIndex(index);
+  setTimeout(() => setCopiedIndex(null), 2000);
+};
+
   return (
     <motion.section
       id="eventinfo"
@@ -202,7 +245,6 @@ function EventInfo() {
           viewport={{ once: true, amount: 0.1 }}
         >
           <span className="eventinfo-eyebrow">Consideraciones</span>
-
           <div className="considerations-grid">
 
             {/* Clima */}
@@ -239,6 +281,45 @@ function EventInfo() {
               </p>
             </div>
 
+          </div>
+
+          <span className="eventinfo-eyebrow">Muestras de cariño</span>
+          <span className="eventinfo-eyebrow">Su compañía en nuestra Boda es el regalo más valioso. Si deseas obsequiarnos algo adicional, un aporte económico es siempre bienvenido</span>
+
+         <div className="considerations-grid">
+            {sinpeContacts.map((contact, i) => (
+              <div className="consideration-card sinpe-card" key={i}>
+
+                <div className="consideration-header">
+                  <span className="consideration-label">Sinpe Móvil</span>
+                  <div className="consideration-icon"><IconPhone /></div>
+                </div>
+
+                <div className="sinpe-body">
+                  <div className="sinpe-icon-wrapper">
+                    <IconSinpe />
+                  </div>
+
+                  <p className="sinpe-name">{contact.name}</p>
+
+                  <div className="sinpe-number-row">
+                    <span className="sinpe-number">{contact.phone}</span>
+                  </div>
+
+                  {contact.bank && (
+                    <span className="sinpe-bank">{contact.bank}</span>
+                  )}
+
+                  <button
+                    className={`sinpe-copy-btn ${copiedIndex === i ? "copied" : ""}`}
+                    onClick={() => handleCopy(contact.phone, i)}
+                  >
+                    {copiedIndex === i ? "¡Copiado! ✓" : "Copiar número"}
+                  </button>
+                </div>
+
+              </div>
+            ))}
           </div>
         </motion.div>
 
