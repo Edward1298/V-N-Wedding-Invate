@@ -139,7 +139,7 @@ function AboutUs() {
             <div className="frame-corner br" />
           </div>
           <p className="finale-quote">
-            "Y así, sin buscarlo, nos encontramos."
+            "En cada etapa, el amor nunca ha faltado."
           </p>
         </motion.div>
 
