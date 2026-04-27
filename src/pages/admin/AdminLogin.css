@@ -1,0 +1,135 @@
+.admin-login-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  padding: 20px;
+}
+
+.admin-login {
+  background-color: #171717;
+  border-radius: 16px;
+  padding: 48px 40px;
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Georgia', serif;
+  
+}
+
+/* Avatar */
+.admin-login-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid #5e5e5e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  color: #919191;
+}
+
+/* Títulos */
+.admin-login-title {
+  color: #ffffff;
+  font-size: 1.1rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: normal;
+  margin: 0 0 6px;
+}
+
+.admin-login-subtitle {
+  color: #5e5e5e;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0 0 36px;
+}
+
+/* Campos */
+.admin-login-fields {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 8px;
+}
+
+.admin-login-input {
+  width: 100%;
+  padding: 12px 16px;
+  background: transparent;
+  border: 1px solid #5e5e5e;
+  color: #ffffff;
+  border-radius: 8px;
+  font-family: 'Georgia', serif;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  box-sizing: border-box;
+}
+
+.admin-login-input::placeholder {
+  color: #5e5e5e;
+}
+
+.admin-login-input:focus {
+  border-color: #919191;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.04);
+}
+
+/* Error */
+.admin-login-error {
+  width: 100%;
+  padding: 10px 14px;
+  background: rgba(220, 50, 50, 0.1);
+  border: 1px solid rgba(220, 50, 50, 0.3);
+  border-radius: 8px;
+  color: #f87171;
+  font-size: 0.8rem;
+  text-align: center;
+  margin-bottom: 16px;
+  letter-spacing: 0.02em;
+}
+
+/* Botón */
+.admin-login-btn {
+  width: 100%;
+  padding: 13px;
+  background: #cecac3;
+  color: #000000;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Georgia', serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease, opacity 0.25s ease;
+  margin-top: 8px;
+}
+
+.admin-login-btn:hover:not(:disabled) {
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+}
+
+.admin-login-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Footer */
+.admin-login-footer {
+  color: #3a3a3a;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  margin-top: 28px;
+  text-align: center;
+}

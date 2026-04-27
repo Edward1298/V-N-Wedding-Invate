@@ -1,0 +1,414 @@
+/* ─── Root ─────────────────────────────────────────────── */
+.dashboard-root {
+  position: relative;
+  min-height: 100vh;
+  background: #000;
+  overflow-x: hidden;
+}
+
+/* ─── Galaxy fijo de fondo ──────────────────────────────── */
+.galaxy-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+
+/* ─── UI encima del galaxy ──────────────────────────────── */
+.dashboard-ui {
+  position: relative;
+  z-index: 1;
+  padding: clamp(24px, 5vw, 48px);
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ─── Zona compartida (las tres capas) ──────────────────── */
+.dash-header,
+.stats-row,
+.table-wrapper {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid #2a2a2a;
+  border-radius: 14px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* ─── Header ────────────────────────────────────────────── */
+.dash-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 28px;
+}
+
+.dash-eyebrow {
+  font-family: 'Georgia', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #5e5e5e;
+  margin: 0 0 4px;
+}
+
+.dash-title {
+  font-family: 'Georgia', serif;
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  font-weight: normal;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: 0.04em;
+}
+
+/* ─── Stats ─────────────────────────────────────────────── */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 20px 28px;
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 0;
+}
+
+.stat-card:not(:last-child) {
+  border-right: 1px solid #2a2a2a;
+}
+
+.stat-label {
+  font-family: 'Georgia', serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #5e5e5e;
+}
+
+.stat-value {
+  font-family: 'Georgia', serif;
+  font-size: 2rem;
+  color: #ffffff;
+  font-weight: normal;
+  line-height: 1;
+}
+
+.stat-value.attending     { color: #a3d9a5; }
+.stat-value.not-attending { color: #f87171; }
+
+/* ─── Tabla wrapper ─────────────────────────────────────── */
+.table-wrapper {
+  overflow: visible;
+}
+
+/* ─── Filtros (dentro del table-wrapper) ────────────────── */
+.filter-row {
+  display: flex;
+  gap: 8px;
+  padding: 16px 20px;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.filter-btn {
+  padding: 8px 25px;
+  border-radius: 100px;
+  border: 1px solid #5e5e5e;
+  background: transparent;
+  color: #919191;
+  font-family: 'Georgia', serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.filter-btn:hover {
+  border-color: #919191;
+  color: #ffffff;
+}
+
+.filter-btn.active {
+  border-color: #ffffff;
+  color: #ffffff;
+    background: #000000;
+}
+
+/* ─── Tabla ─────────────────────────────────────────────── */
+.dash-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Georgia', serif;
+  font-size: 0.87rem;
+}
+
+.dash-table th {
+  padding: 12px 20px;
+  text-align: left;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #5e5e5e;
+  border-bottom: 1px solid #2a2a2a;
+  font-weight: normal;
+}
+
+.dash-table td {
+  padding: 13px 20px;
+  color: #c6c6c6;
+  border-bottom: 1px solid #1a1a1a;
+  vertical-align: middle;
+}
+
+.dash-table tr:last-child td {
+  border-bottom: none;
+}
+
+.dash-table tr:hover td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.td-message {
+  max-width: 180px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #5e5e5e;
+  font-size: 0.8rem;
+}
+
+/* ─── Badges ────────────────────────────────────────────── */
+.badge {
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+.badge-yes {
+  background: rgba(163, 217, 165, 0.1);
+  border: 1px solid rgba(163, 217, 165, 0.3);
+  color: #a3d9a5;
+    padding: 6px 18px;
+}
+
+.badge-no {
+  background: rgba(248, 113, 113, 0.1);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  color: #f87171;
+      padding: 6px 18px;
+
+}
+
+/* ─── Botones ───────────────────────────────────────────── */
+.btn-delete {
+    padding: 6px 18px;
+  border-radius: 6px;
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  background: transparent;
+  color: #f87171;
+  font-family: 'Georgia', serif;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.btn-delete:hover {
+  background: rgba(248, 113, 113, 0.1);
+  border-color: #f87171;
+}
+
+.btn-logout {
+  padding: 8px 20px;
+  border-radius: 8px;
+  border: 1px solid #5e5e5e;
+  background: transparent;
+  color: #919191;
+  font-family: 'Georgia', serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+
+.btn-logout:hover {
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+/* ─── Confirm modal ─────────────────────────────────────── */
+.confirm-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.confirm-card {
+  background: #111;
+  border: 1px solid #2a2a2a;
+  border-radius: 16px;
+  padding: 36px 40px;
+  text-align: center;
+  max-width: 360px;
+  width: 90%;
+}
+
+.confirm-title {
+  font-family: 'Georgia', serif;
+  font-size: 1.1rem;
+  color: #ffffff;
+  margin: 0 0 8px;
+}
+
+.confirm-sub {
+  font-family: 'Georgia', serif;
+  font-size: 0.85rem;
+  color: #5e5e5e;
+  margin: 0 0 28px;
+}
+
+.confirm-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.btn-ghost {
+  padding: 10px 24px;
+  border-radius: 8px;
+  border: 1px solid #5e5e5e;
+  background: transparent;
+  color: #919191;
+  font-family: 'Georgia', serif;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.btn-ghost:hover {
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.btn-danger {
+  padding: 10px 24px;
+  border-radius: 8px;
+  border: 1px solid rgba(248, 113, 113, 0.4);
+  background: rgba(248, 113, 113, 0.1);
+  color: #f87171;
+  font-family: 'Georgia', serif;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-danger:hover {
+  background: rgba(248, 113, 113, 0.2);
+}
+
+/* ─── Estados vacíos ────────────────────────────────────── */
+.dash-loading,
+.dash-empty {
+  font-family: 'Georgia', serif;
+  color: #5e5e5e;
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 60px 20px;
+  letter-spacing: 0.04em;
+}
+
+/* ─── Scroll horizontal tabla ───────────────────────────── */
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; 
+}
+
+/* ─── Columnas redimensionables ─────────────────────────── */
+.dash-table {
+  table-layout: fixed;
+}
+
+.col-resizable {
+  resize: horizontal;
+  overflow: hidden;
+  min-width: 80px;
+  width: 160px;
+}
+
+.col-narrow {
+  width: 90px;
+}
+
+.col-wide {
+  width: 220px;
+}
+
+.col-actions {
+  width: 100px;
+}
+
+/* ─── Celdas de datos: clip en lugar de ellipsis ─────────── */
+.dash-table td {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 0; /* hace que el td respete el width del th */
+}
+
+/* ─── Mensaje: ahora respeta el ancho de la columna ─────── */
+.td-message {
+  max-width: unset;
+  color: #5e5e5e;
+  font-size: 0.8rem;
+}
+
+/* ─── Padding inferior para que no quede pegado ─────────── */
+.dashboard-ui {
+  padding-bottom: 48px;
+}
+
+/* En móvil, dar más aire al dashboard */
+@media (max-width: 768px) {
+  .dashboard-ui {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .dash-table {
+    min-width: 600px; /* fuerza scroll horizontal en lugar de colapsar */
+  }
+
+  .col-resizable {
+    width: 120px;
+    min-width: 60px;
+  }
+
+  .col-wide {
+    width: 140px;
+  }
+
+  .col-actions {
+    width: 90px;
+  }
+
+  .btn-delete {
+    padding: 5px 10px;
+    font-size: 0.72rem;
+  }
+}
+
+.col-actions,
+.dash-table td:last-child {
+  overflow: visible;
+  white-space: nowrap;
+  text-overflow: clip;
+}

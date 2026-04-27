@@ -368,3 +368,78 @@
     font-size: 26px;
   }
 }
+
+/* ─── Sinpe Cards ─────────────────────────────────────── */
+.sinpe-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.sinpe-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding-top: 16px;
+}
+
+.sinpe-icon-wrapper {
+  width: 48px;
+  height: 48px;
+  color: var(--hover-soft);
+}
+
+.sinpe-name {
+  font-family: 'Georgia', serif;
+  font-size: 1rem;
+  color: var(--text-primary);
+  margin: 0;
+  text-align: center;
+}
+
+.sinpe-number-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sinpe-number {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--text-primary);
+  font-family: monospace;
+}
+
+.sinpe-bank {
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--hover-soft);
+}
+
+.sinpe-copy-btn {
+  margin-top: 4px;
+  padding: 8px 20px;
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle);
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: 'Georgia', serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: border-color 0.25s ease, color 0.25s ease;
+}
+
+.sinpe-copy-btn:hover {
+  border-color: var(--text-primary);
+  color: var(--text-primary);
+}
+
+.sinpe-copy-btn.copied {
+  border-color: var(--text-primary);
+  color: var(--text-primary);
+  cursor: default;
+}
