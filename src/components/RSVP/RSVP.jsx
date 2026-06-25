@@ -25,6 +25,19 @@ function RSVP() {
     e.preventDefault();
     if (!isFormValid) return;
 
+    if (!supabase) {
+      Swal.fire({
+        icon: "error",
+        title: "Configuración pendiente",
+        text: "El formulario no está disponible en este momento.",
+        confirmButtonText: "Cerrar",
+        background: "#000000",
+        color: "#ffffff",
+        confirmButtonColor: "#5e5e5e",
+      });
+      return;
+    }
+
     setLoading(true);
 
     try {

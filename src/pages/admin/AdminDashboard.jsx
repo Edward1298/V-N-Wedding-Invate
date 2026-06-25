@@ -20,6 +20,7 @@ export default function AdminDashboard() {
   }, []);
 
   const fetchGuests = async () => {
+    if (!supabase) return;
     try {
       const { data, error } = await supabase.from("guests").select("*");
       if (error) throw error;
@@ -32,6 +33,7 @@ export default function AdminDashboard() {
   };
 
   const handleDelete = async () => {
+    if (!supabase) return;
     try {
       const { error } = await supabase.from("guests").delete().eq("id", deleteId);
       if (error) throw error;
@@ -44,6 +46,7 @@ export default function AdminDashboard() {
   };
 
   const handleLogout = async () => {
+    if (!supabase) return;
     try {
       const { error } = await supabase.auth.signOut();
       if (error) throw error;
