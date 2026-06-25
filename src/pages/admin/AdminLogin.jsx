@@ -23,6 +23,11 @@ export default function AdminLogin() {
 
 
   const handleLogin = async () => {
+    if (!supabase) {
+      setError("Supabase no está configurado.");
+      return;
+    }
+
     setError("");
     setLoading(true);
 
