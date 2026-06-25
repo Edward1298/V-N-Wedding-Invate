@@ -3,11 +3,13 @@ import Home from "./pages/Home";
 import AdminLogin from "./pages/admin/AdminLogin";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
 
 function App() {
   return (
     <Router>
-      <Routes>
+      <ErrorBoundary>
+        <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/admin" element={<AdminLogin />} />
         <Route path="/admin/login" element={<Navigate to="/admin" replace />} />
@@ -21,7 +23,8 @@ function App() {
         />
         {/* Cualquier ruta desconocida también redirige al home */}
         <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
+        </Routes>
+      </ErrorBoundary>
     </Router>
   );
 }

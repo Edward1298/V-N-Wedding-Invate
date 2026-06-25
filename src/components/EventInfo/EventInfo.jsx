@@ -1,7 +1,6 @@
 import Navbar from "../Navbar/Navbar";
 import { motion } from "framer-motion";
 import "./EventInfo.css";
-import { useState } from "react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -126,7 +125,7 @@ const events = [
   {
     type: "Celebración",
     icon: <IconVenue />,
-    time: "4:00 PM",
+    time: "5:00 PM",
     name: "Hotel Estancia El Rodeo",
     address: "San Rafael, Heredia, Costa Rica",
     waze: "https://waze.com/ul/hd1u0gbpw7",
@@ -140,15 +139,18 @@ const weather = {
   night: { label: "Noche", temp: "17°" },
 };
 
-const sinpeContacts = [
+const bankAccounts = [
   {
-    name: "Jose Ignacio Ramirez Villanea",  
-    phone: "8320-3884",                
-              
+    currency: "Dólares",
+    name: "Jose Ignacio Ramirez Villanea",
+    account: "962483897",
+    iban: "CR88010200009624838973",
   },
   {
-    name: "Valeria Camacho Sandí",  
-    phone: "8419-2861",                 
+    currency: "Colones",
+    name: "Raquel Valeria Camacho Sandí",
+    account: "704780170",
+    iban: "CR69010200007047801709",
   },
 ];
 
@@ -156,15 +158,6 @@ const sinpeContacts = [
 
 
 function EventInfo() {
-
-  const [copiedIndex, setCopiedIndex] = useState(null);
-
-const handleCopy = (phone, index) => {
-  navigator.clipboard.writeText(phone.replace("-", ""));
-  setCopiedIndex(index);
-  setTimeout(() => setCopiedIndex(null), 2000);
-};
-
   return (
     <motion.section
       id="eventinfo"
@@ -187,13 +180,12 @@ const handleCopy = (phone, index) => {
           viewport={{ once: true, amount: 0.1 }}
         >
           <span className="eventinfo-eyebrow">La gran fecha</span>
-          <h2 className="eventinfo-date">14 · XI · MMX XIV</h2>
+          <h2 className="eventinfo-date">14 de Noviembre 2026</h2>
           <div className="eventinfo-divider">
             <span className="divider-line" />
             <span className="divider-diamond">◆</span>
             <span className="divider-line" />
-          </div>
-          <p className="eventinfo-subtitle">14 de Noviembre — San José, Costa Rica</p>
+          </div>       
         </motion.div>
 
         {/* ── CARDS DE EVENTOS ── */}
@@ -245,79 +237,71 @@ const handleCopy = (phone, index) => {
           viewport={{ once: true, amount: 0.1 }}
         >
           <span className="eventinfo-eyebrow">Consideraciones</span>
-          <div className="considerations-grid">
+
+          <div className="considerations-editorial">
 
             {/* Clima */}
-            <div className="consideration-card">
-              <div className="consideration-header">
-                <span className="consideration-label">Clima</span>
-                <div className="consideration-icon"><IconCloud /></div>
-              </div>
-              <p className="consideration-condition">{weather.condition}</p>
-              <div className="weather-temps">
-                <div className="weather-temp-block">
-                  <div className="weather-temp-icon"><IconClock /></div>
-                  <span className="weather-temp-label">{weather.afternoon.label}</span>
-                  <span className="weather-temp-value">{weather.afternoon.temp}</span>
-                </div>
-                <div className="weather-divider" />
-                <div className="weather-temp-block">
-                  <div className="weather-temp-icon"><IconMoon /></div>
-                  <span className="weather-temp-label">{weather.night.label}</span>
-                  <span className="weather-temp-value">{weather.night.temp}</span>
-                </div>
+            <div className="consideration-row">
+              <div className="consideration-row-icon"><IconCloud /></div>
+              <div className="consideration-row-content">
+                <span className="consideration-row-label">Clima</span>
+                <p className="consideration-row-text">{weather.condition}</p>
+                <p className="consideration-row-subtext">
+                  Tarde {weather.afternoon.temp} — Noche {weather.night.temp}
+                </p>
               </div>
             </div>
 
+            <div className="consideration-row-divider" />
+
             {/* Vestimenta */}
-            <div className="consideration-card">
-              <div className="consideration-header">
-                <span className="consideration-label">Código de vestimenta</span>
-                <div className="consideration-icon"><IconDress /></div>
+            <div className="consideration-row">
+              <div className="consideration-row-icon"><IconDress /></div>
+              <div className="consideration-row-content">
+                <span className="consideration-row-label">Código de vestimenta</span>
+                <p className="consideration-row-title">Todo de Negro</p>
+                <p className="consideration-row-text">
+                  Vestimenta formal. Nos encantaría que nos acompañen vistiendo completamente de negro para crear una atmósfera elegante y en armonía con la celebración.
+                </p>
+                <p className="consideration-row-text">
+                  Para inspiración y referencias de estilo, encontrarán un tablero de Pinterest adjunto.
+                </p>
+                <a
+                  href="https://pin.it/2363u0AnP"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="consideration-pinterest-link"
+                >
+                  Ver tablero de Pinterest
+                </a>
               </div>
-              <p className="consideration-dress-main">Todo de Negro</p>
-              <p className="consideration-dress-sub">
-                Formal. Celebremos con elegancia y en sintonía con la noche.
-              </p>
             </div>
 
           </div>
 
           <span className="eventinfo-eyebrow">Muestras de cariño</span>
-          <span className="eventinfo-eyebrow">Su compañía en nuestra Boda es el regalo más valioso. Si deseas obsequiarnos algo adicional, un aporte económico es siempre bienvenido</span>
+          <span className="eventinfo-eyebrow">El mejor regalo es compartir este día tan especial con ustedes. Si desean obsequiarnos algo adicional, una contribución a nuestro futuro juntos será siempre bienvenida.</span>
 
-         <div className="considerations-grid">
-            {sinpeContacts.map((contact, i) => (
+          <div className="considerations-grid">
+            {bankAccounts.map((acc, i) => (
               <div className="consideration-card sinpe-card" key={i}>
-
                 <div className="consideration-header">
-                  <span className="consideration-label">Sinpe Móvil</span>
-                  <div className="consideration-icon"><IconPhone /></div>
+                  <span className="consideration-label">Transferencia Bancaria</span>
+                  <div className="consideration-icon"><IconSinpe /></div>
                 </div>
 
                 <div className="sinpe-body">
-                  <div className="sinpe-icon-wrapper">
-                    <IconSinpe />
-                  </div>
-
-                  <p className="sinpe-name">{contact.name}</p>
-
+                  <span className="sinpe-currency-badge">{acc.currency}</span>
+                  <p className="sinpe-name">{acc.name}</p>
                   <div className="sinpe-number-row">
-                    <span className="sinpe-number">{contact.phone}</span>
+                    <span className="sinpe-account-label">Cuenta</span>
+                    <span className="sinpe-number">{acc.account}</span>
                   </div>
-
-                  {contact.bank && (
-                    <span className="sinpe-bank">{contact.bank}</span>
-                  )}
-
-                  <button
-                    className={`sinpe-copy-btn ${copiedIndex === i ? "copied" : ""}`}
-                    onClick={() => handleCopy(contact.phone, i)}
-                  >
-                    {copiedIndex === i ? "¡Copiado! ✓" : "Copiar número"}
-                  </button>
+                  <div className="sinpe-number-row">
+                    <span className="sinpe-account-label">IBAN</span>
+                    <span className="sinpe-iban">{acc.iban}</span>
+                  </div>
                 </div>
-
               </div>
             ))}
           </div>
