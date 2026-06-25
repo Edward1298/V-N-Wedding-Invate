@@ -55,7 +55,8 @@ export default function Hero() {
   const advance = () => {
     cancelAnimationFrame(rafRef.current);
     setProgress(0);
-    setCurrent((c) => { setPrev(c); return (c + 1) % images.length; });
+    setPrev(current);
+    setCurrent((current + 1) % images.length);
     startProgress();
   };
 
@@ -110,6 +111,8 @@ export default function Hero() {
             key={i}
             className={`hero-slide ${i === current ? "active" : ""} ${i === prev ? "leaving" : ""}`}
             style={{ backgroundImage: `url(${img})` }}
+            role="img"
+            aria-label={`Foto de la pareja ${i + 1}`}
           />
         ))}
       </div>

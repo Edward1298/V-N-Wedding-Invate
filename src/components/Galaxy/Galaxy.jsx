@@ -214,6 +214,7 @@ export default function Galaxy({
 
     let program;
 
+    let resizeTimeout;
     function resize() {
       const scale = 1;
       renderer.setSize(ctn.offsetWidth * scale, ctn.offsetHeight * scale);
@@ -225,7 +226,11 @@ export default function Galaxy({
         );
       }
     }
-    window.addEventListener('resize', resize, false);
+    function debouncedResize() {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(resize, 100);
+    }
+    window.addEventListener('resize', debouncedResize, false);
     resize();
 
     const geometry = new Triangle(gl);
@@ -302,12 +307,15 @@ export default function Galaxy({
 
     return () => {
       cancelAnimationFrame(animateId);
-      window.removeEventListener('resize', resize);
+      clearTimeout(resizeTimeout);
+      window.removeEventListener('resize', debouncedResize);
       if (mouseInteraction) {
         ctn.removeEventListener('mousemove', handleMouseMove);
         ctn.removeEventListener('mouseleave', handleMouseLeave);
       }
-      ctn.removeChild(gl.canvas);
+      if (ctn.contains(gl.canvas)) {
+        ctn.removeChild(gl.canvas);
+      }
       gl.getExtension('WEBGL_lose_context')?.loseContext();
     };
   }, [

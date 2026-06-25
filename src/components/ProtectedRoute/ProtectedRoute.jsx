@@ -8,10 +8,6 @@ export default function ProtectedRoute({ children }) {
   useEffect(() => {
     let mounted = true;
 
-    supabase.auth.getSession().then(({ data }) => {
-      if (mounted) setSession(data.session ?? null);
-    });
-
     const { data: listener } = supabase.auth.onAuthStateChange(
       (_event, session) => {
         if (mounted) setSession(session ?? null);
