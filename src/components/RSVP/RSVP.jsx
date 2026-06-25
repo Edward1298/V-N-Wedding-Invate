@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import { motion } from "framer-motion";
 import { supabase } from "../../lib/supabaseClient";
@@ -13,54 +13,84 @@ function RSVP() {
   const [attending, setAttending] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const isFormValid = useMemo(() => {
-    return firstName.trim() && lastName.trim() && email.trim() && attending;
-  }, [firstName, lastName, email, attending]);
+  const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  const isFormValid =
+    firstName.trim() !== "" &&
+    lastName.trim() !== "" &&
+    isValidEmail(email.trim()) &&
+    attending;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!isFormValid) return;
 
-    setLoading(true);
-
-    const { error } = await supabase.from("guests").insert([
-      {
-        first_name: firstName,
-        last_name: lastName,
-        email: email,
-        will_attend: attending,
-        message: message,
-      },
-    ]);
-
-    setLoading(false);
-
-    if (error) {
-      console.error(error);
+    if (!supabase) {
       Swal.fire({
         icon: "error",
-        title: "¡Ups!",
-        text: "Hubo un error al enviar tu respuesta, intenta de nuevo.",
+        title: "Configuración pendiente",
+        text: "El formulario no está disponible en este momento.",
         confirmButtonText: "Cerrar",
         background: "#000000",
         color: "#ffffff",
         confirmButtonColor: "#5e5e5e",
       });
-    } else {
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const { error } = await supabase.from("guests").insert([
+        {
+          first_name: firstName,
+          last_name: lastName,
+          email: email,
+          will_attend: attending,
+          message: message,
+        },
+      ]);
+
+      if (error) {
+        console.error(error);
+        Swal.fire({
+          icon: "error",
+          title: "¡Ups!",
+          text: "Hubo un error al enviar tu respuesta, intenta de nuevo.",
+          confirmButtonText: "Cerrar",
+          background: "#000000",
+          color: "#ffffff",
+          confirmButtonColor: "#5e5e5e",
+        });
+      } else {
+        Swal.fire({
+          icon: "success",
+          title: "¡Gracias!",
+          text: "Tu respuesta ha sido enviada con éxito.",
+          confirmButtonText: "¡Perfecto!",
+          background: "#000000",
+          color: "#ffffff",
+          confirmButtonColor: "#5e5e5e",
+        });
+        setFirstName("");
+        setLastName("");
+        setEmail("");
+        setMessage("");
+        setAttending("");
+      }
+    } catch (err) {
+      console.error(err);
       Swal.fire({
-        icon: "success",
-        title: "¡Gracias!",
-        text: "Tu respuesta ha sido enviada con éxito.",
-        confirmButtonText: "¡Perfecto!",
+        icon: "error",
+        title: "¡Ups!",
+        text: "Error de conexión. Intenta de nuevo.",
+        confirmButtonText: "Cerrar",
         background: "#000000",
         color: "#ffffff",
         confirmButtonColor: "#5e5e5e",
       });
-      setFirstName("");
-      setLastName("");
-      setEmail("");
-      setMessage("");
-      setAttending("");
+    } finally {
+      setLoading(false);
     }
   };
 

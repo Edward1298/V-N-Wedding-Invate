@@ -90,10 +90,7 @@ const facts = [
     question: "¿Cuántos hijos queremos tener?",
     answer: "Vale quiere uno, Nacho quiere tres… ya veremos.",
   },
-]
-const handleCardClick = (e) => {
-  e.currentTarget.classList.toggle("flipped");
-};
+];
 
 function FunFacts() {
   return (
@@ -128,11 +125,20 @@ function FunFacts() {
           </motion.div>
 
           {/* Cards */}
-         {facts.map((fact, i) => (
+          {facts.map((fact, i) => (
   <motion.div
     key={i}
     className="ff-card"
+    tabIndex={0}
+    role="button"
+    aria-label={fact.question}
     onClick={(e) => e.currentTarget.classList.toggle("flipped")}
+    onKeyDown={(e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        e.currentTarget.classList.toggle("flipped");
+      }
+    }}
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5, delay: i * 0.07 }}

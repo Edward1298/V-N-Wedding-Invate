@@ -1,16 +1,48 @@
-# React + Vite
+# VyN Wedding Invite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Boda entre Vale y Nacho — Noviembre 14, 2026.
 
-Currently, two official plugins are available:
+Wedding invitation website with RSVP, event details, love story, fun facts, and an admin dashboard for guest management.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Tech Stack
 
-## React Compiler
+React 19 · Vite 8 · React Router v7 · Framer Motion · Supabase · ogl (WebGL)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Getting Started
 
-## Expanding the ESLint configuration
+```bash
+npm install
+npm run dev
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Create a `.env` file with:
+
+```
+VITE_SUPABASE_URL=https://your-project.supabase.co
+VITE_SUPABASE_ANON_KEY=your_anon_key
+```
+
+## Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Vite dev server with HMR |
+| `npm run build` | Production build to `dist/` |
+| `npm run preview` | Preview production build locally |
+| `npm run lint` | ESLint 9 flat config |
+
+## Routes
+
+| Path | Page |
+|------|------|
+| `/` | Public invitation (Hero, About Us, Fun Facts, Event Info, RSVP) |
+| `/admin` | Admin login |
+| `/admin/dashboard` | Guest list dashboard (protected) |
+
+## Database
+
+Supabase table `guests`: `id`, `first_name`, `last_name`, `email`, `will_attend`, `message`.
+
+## Deploy
+
+Vercel with SPA rewrite (`vercel.json`). All routes rewrite to `/`.

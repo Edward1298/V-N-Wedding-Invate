@@ -20,20 +20,40 @@ export default function AdminDashboard() {
   }, []);
 
   const fetchGuests = async () => {
-    const { data } = await supabase.from("guests").select("*");
-    setGuests(data ?? []);
-    setLoading(false);
+    if (!supabase) return;
+    try {
+      const { data, error } = await supabase.from("guests").select("*");
+      if (error) throw error;
+      setGuests(data ?? []);
+    } catch (err) {
+      console.error("Error fetching guests:", err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleDelete = async () => {
-    await supabase.from("guests").delete().eq("id", deleteId);
-    setDeleteId(null);
-    fetchGuests();
+    if (!supabase) return;
+    try {
+      const { error } = await supabase.from("guests").delete().eq("id", deleteId);
+      if (error) throw error;
+      setDeleteId(null);
+      fetchGuests();
+    } catch (err) {
+      console.error("Error deleting guest:", err);
+      alert("Error al eliminar. Intenta de nuevo.");
+    }
   };
 
   const handleLogout = async () => {
-    await supabase.auth.signOut();
-    navigate("/admin", { replace: true });
+    if (!supabase) return;
+    try {
+      const { error } = await supabase.auth.signOut();
+      if (error) throw error;
+      navigate("/admin", { replace: true });
+    } catch (err) {
+      console.error("Error signing out:", err);
+    }
   };
 
   const filteredGuests = guests.filter((g) => {

@@ -139,7 +139,7 @@ function AboutUs() {
             <div className="frame-corner br" />
           </div>
           <p className="finale-quote">
-            "En cada etapa, el amor nunca ha faltado."
+            "Y por encima de todo esto, revestíos del amor, que es el vínculo de la perfección. Colosenses 3:14"
           </p>
         </motion.div>
 

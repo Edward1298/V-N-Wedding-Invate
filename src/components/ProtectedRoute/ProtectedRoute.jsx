@@ -6,11 +6,9 @@ export default function ProtectedRoute({ children }) {
   const [session, setSession] = useState(undefined);
 
   useEffect(() => {
-    let mounted = true;
+    if (!supabase) return;
 
-    supabase.auth.getSession().then(({ data }) => {
-      if (mounted) setSession(data.session ?? null);
-    });
+    let mounted = true;
 
     const { data: listener } = supabase.auth.onAuthStateChange(
       (_event, session) => {
@@ -24,7 +22,7 @@ export default function ProtectedRoute({ children }) {
     };
   }, []);
 
-  if (session === undefined) {
+  if (!supabase || session === undefined) {
     return (
       <div style={{
         minHeight: "100vh",
@@ -40,7 +38,7 @@ export default function ProtectedRoute({ children }) {
           letterSpacing: "0.1em",
           textTransform: "uppercase"
         }}>
-          Verificando sesión...
+          {supabase ? "Verificando sesión..." : "Configuración pendiente"}
         </p>
       </div>
     );

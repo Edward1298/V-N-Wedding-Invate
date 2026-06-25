@@ -32,6 +32,7 @@
   text-transform: uppercase;
   color: var(--text-secondary);
   opacity: 0.6;
+  text-align: center;
 }
 
 .eventinfo-date {
@@ -260,80 +261,105 @@
   opacity: 0.4;
 }
 
-/* Clima */
-.consideration-condition {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 22px;
-  font-weight: 300;
-  font-style: italic;
-  color: var(--text-primary);
-  margin: 0;
-}
-
-.weather-temps {
-  display: flex;
-  align-items: center;
-  gap: 0;
-  border: 1px solid var(--border-subtle);
-}
-
-.weather-temp-block {
-  flex: 1;
+/* ─── CONSIDERATIONS EDITORIAL ─── */
+.considerations-editorial {
+  width: 100%;
+  max-width: 600px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 16px;
-  gap: 6px;
+  gap: 0;
 }
 
-.weather-temp-icon {
-  width: 20px;
-  height: 20px;
+.consideration-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 28px 0;
+  text-align: center;
+}
+
+.consideration-row-icon {
+  width: 28px;
+  height: 28px;
   color: var(--text-secondary);
-  opacity: 0.4;
+  opacity: 0.5;
 }
 
-.weather-temp-label {
+.consideration-row-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.consideration-row-label {
   font-family: 'Georgia', serif;
   font-size: 10px;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--text-secondary);
   opacity: 0.55;
 }
 
-.weather-temp-value {
+.consideration-row-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 42px;
+  font-size: 24px;
   font-weight: 300;
-  color: var(--text-primary);
-  line-height: 1;
-}
-
-.weather-divider {
-  width: 1px;
-  height: 80px;
-  background: var(--border-subtle);
-  flex-shrink: 0;
-}
-
-/* Vestimenta */
-.consideration-dress-main {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 32px;
-  font-weight: 300;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   color: var(--text-primary);
   margin: 0;
 }
 
-.consideration-dress-sub {
+.consideration-row-text {
   font-family: 'Georgia', serif;
   font-size: 13px;
   line-height: 1.7;
   color: var(--text-secondary);
-  opacity: 0.6;
+  opacity: 0.65;
   margin: 0;
+}
+
+.consideration-row-subtext {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--text-secondary);
+  opacity: 0.7;
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+.consideration-row-divider {
+  width: 100%;
+  height: 1px;
+  background: var(--border-subtle);
+  opacity: 0.5;
+}
+
+.consideration-pinterest-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  margin-top: 4px;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-family: 'Georgia', serif;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: all 0.25s ease;
+  align-self: center;
+}
+
+.consideration-pinterest-link:hover {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  border-color: var(--text-primary);
 }
 
 /* ─── RESPONSIVE ─── */
@@ -360,12 +386,18 @@
     flex-direction: column;
   }
 
-  .weather-temp-value {
-    font-size: 36px;
+  .consideration-row {
+    flex-direction: column;
+    gap: 12px;
   }
 
-  .consideration-dress-main {
-    font-size: 26px;
+  .consideration-row-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .consideration-row-title {
+    font-size: 20px;
   }
 }
 
@@ -384,10 +416,16 @@
   padding-top: 16px;
 }
 
-.sinpe-icon-wrapper {
-  width: 48px;
-  height: 48px;
-  color: var(--hover-soft);
+.sinpe-currency-badge {
+  display: inline-block;
+  font-family: 'Georgia', serif;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  margin-bottom: 4px;
 }
 
 .sinpe-name {
@@ -412,34 +450,20 @@
   font-family: monospace;
 }
 
-.sinpe-bank {
-  font-size: 0.78rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--hover-soft);
-}
-
-.sinpe-copy-btn {
-  margin-top: 4px;
-  padding: 8px 20px;
-  border-radius: 999px;
-  border: 1px solid var(--border-subtle);
-  background: transparent;
-  color: var(--text-secondary);
+.sinpe-account-label {
   font-family: 'Georgia', serif;
-  font-size: 0.8rem;
-  letter-spacing: 0.06em;
-  cursor: pointer;
-  transition: border-color 0.25s ease, color 0.25s ease;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  opacity: 0.5;
+  min-width: 48px;
 }
 
-.sinpe-copy-btn:hover {
-  border-color: var(--text-primary);
+.sinpe-iban {
+  font-family: monospace;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
   color: var(--text-primary);
-}
-
-.sinpe-copy-btn.copied {
-  border-color: var(--text-primary);
-  color: var(--text-primary);
-  cursor: default;
+  word-break: break-all;
 }

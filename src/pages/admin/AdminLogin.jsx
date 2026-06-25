@@ -23,20 +23,29 @@ export default function AdminLogin() {
 
 
   const handleLogin = async () => {
+    if (!supabase) {
+      setError("Supabase no está configurado.");
+      return;
+    }
+
     setError("");
     setLoading(true);
 
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
+    try {
+      const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
 
-    setLoading(false);
-
-    if (error) {
-      setError("Usuario o contraseña incorrectos.");
-    } else {
-      navigate("/admin/dashboard");
+      if (error) {
+        setError("Usuario o contraseña incorrectos.");
+      } else {
+        navigate("/admin/dashboard");
+      }
+    } catch {
+      setError("Error de conexión. Intenta de nuevo.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -60,6 +69,7 @@ export default function AdminLogin() {
             type="text"
             placeholder="Email"
             className="admin-login-input"
+            value={email}
             onChange={(e) => setEmail(e.target.value)}
             onKeyDown={handleKeyDown}
           />
@@ -67,6 +77,7 @@ export default function AdminLogin() {
             type="password"
             placeholder="Contraseña"
             className="admin-login-input"
+            value={password}
             onChange={(e) => setPassword(e.target.value)}
             onKeyDown={handleKeyDown}
           />
