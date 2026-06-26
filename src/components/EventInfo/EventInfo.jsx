@@ -294,7 +294,7 @@ function EventInfo() {
                   <span className="sinpe-currency-badge">{acc.currency}</span>
                   <p className="sinpe-name">{acc.name}</p>
                   <div className="sinpe-number-row">
-                    <span className="sinpe-account-label">Cuenta</span>
+                    <span className="sinpe-account-label">Cuenta BAC</span>
                     <span className="sinpe-number">{acc.account}</span>
                   </div>
                   <div className="sinpe-number-row">
