@@ -39,6 +39,9 @@ export default function Hero() {
   const intervalRef  = useRef(null);
   const rafRef       = useRef(null);
   const progressStart = useRef(null);
+  const currentRef   = useRef(current);
+
+  currentRef.current = current;
 
   const countdown = useCountdown();
 
@@ -55,8 +58,8 @@ export default function Hero() {
   const advance = () => {
     cancelAnimationFrame(rafRef.current);
     setProgress(0);
-    setPrev(current);
-    setCurrent((current + 1) % images.length);
+    setPrev(currentRef.current);
+    setCurrent(c => (c + 1) % images.length);
     startProgress();
   };
 
@@ -64,7 +67,7 @@ export default function Hero() {
     cancelAnimationFrame(rafRef.current);
     clearInterval(intervalRef.current);
     setProgress(0);
-    setPrev(current);
+    setPrev(currentRef.current);
     setCurrent(idx);
     startProgress();
     intervalRef.current = setInterval(advance, DURATION);
